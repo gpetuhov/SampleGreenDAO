@@ -42,4 +42,7 @@ dependencies {
 
     // GreenDAO
     implementation 'org.greenrobot:greendao:3.2.2'
+
+    // KAndroid
+    implementation 'com.pawegio.kandroid:kandroid:0.8.8@aar'
 }
