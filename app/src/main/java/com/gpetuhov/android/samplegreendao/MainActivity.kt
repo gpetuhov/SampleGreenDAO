@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         initNoteDao()
 
-        updateNotesCount()
+        updateCounters()
 
         saveNoteButton.setOnClickListener { saveNote() }
     }
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             note.text = text
             noteDao?.insert(note)
 
-            updateNotesCount()
+            updateCounters()
 
             // Clear EditText
             editText.setText("")
@@ -46,11 +46,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateCounters() {
+        updateNotesCount()
+        updateSpecialNotesCount()
+    }
+
     private fun updateNotesCount() {
         // Query for all notes
         val count = noteDao?.loadAll()?.size ?: 0
 
         val text = "Total notes: $count"
         notesCount.text = text
+    }
+
+    private fun updateSpecialNotesCount() {
+        // Query for notes which text equals to "Bob"
+        val count = noteDao?.queryBuilder()
+            ?.where(NoteDao.Properties.Text.eq("Bob"))
+            ?.list()
+            ?.size ?: 0
+
+        val text = "Total Bob notes: $count"
+        specialNotesCount.text = text
     }
 }
