@@ -1,9 +1,10 @@
+// GreenDAO
+// This MUST be above all other plugins
+apply plugin: 'org.greenrobot.greendao'
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
-// GreenDAO
-apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 28
@@ -21,6 +22,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+greendao {
+    // This is needed to migrate between schema versions.
+    // Increase this number if database structure changes.
+    schemaVersion 1
 }
 
 dependencies {
