@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
 
         initNoteDao()
 
+        updateNotesCount()
+
         saveNoteButton.setOnClickListener { saveNote() }
     }
 
@@ -32,6 +34,8 @@ class MainActivity : AppCompatActivity() {
             note.text = text
             noteDao?.insert(note)
 
+            updateNotesCount()
+
             // Clear EditText
             editText.setText("")
 
@@ -40,5 +44,13 @@ class MainActivity : AppCompatActivity() {
         } else {
             toast("Note should not be empty")
         }
+    }
+
+    private fun updateNotesCount() {
+        // Query for all notes
+        val count = noteDao?.loadAll()?.size ?: 0
+
+        val text = "Total notes: $count"
+        notesCount.text = text
     }
 }

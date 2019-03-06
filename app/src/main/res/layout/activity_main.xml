@@ -6,22 +6,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
         tools:context=".MainActivity">
 
-    <EditText
-            android:id="@+id/editText"
-            android:hint="Enter note"
-            android:layout_width="0dp"
+    <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:orientation="horizontal">
 
-    <Button
-            android:id="@+id/saveNoteButton"
+        <EditText
+                android:id="@+id/editText"
+                android:hint="Enter note"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+        <Button
+                android:id="@+id/saveNoteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Save note"/>
+
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/notesCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="Save note"/>
+            android:layout_marginTop="16dp"
+            tools:text="123"/>
 
 </LinearLayout>
